@@ -242,3 +242,76 @@ nav ul li a.active {
     background: #f0f4ff;
     border-radius: 10px;
 }
+/* ===== MOBILE RESPONSIVE FINAL FIX ===== */
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Navbar */
+    nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        background: #0a1f44;
+    }
+
+    nav ul.show {
+        display: block;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    /* Hero */
+    .hero {
+        height: auto;
+        padding: 40px 15px;
+    }
+
+    .hero-content {
+        padding: 20px;
+    }
+
+    .hero h1 {
+        font-size: 22px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    /* Courses */
+    .course-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    /* Form */
+    form {
+        width: 90%;
+    }
+
+    /* Contact */
+    .contact {
+        padding: 30px 10px;
+    }
+
+    .contact p {
+        font-size: 14px;
+    }
+}

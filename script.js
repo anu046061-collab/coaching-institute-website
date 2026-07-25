@@ -28,6 +28,9 @@ window.addEventListener("scroll", () => {
                 link.classList.remove("active");
                 document.querySelector("nav ul li a[href*=" + id + "]").classList.add("active");
             });
+            function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("show");
+}
         }
     });
 });
