@@ -70,10 +70,14 @@ nav a {
     text-align: center;
 }
 
-.course-container {
+.courses-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background: #f0f4ff;
+    border-radius: 10px;
 }
 
 .card {
@@ -222,4 +226,19 @@ button:active, .btn:active {
 }
 nav ul li a.active {
     color: yellow;
+}
+#courses {
+    padding: 50px;
+    text-align: center;
+}
+
+.course-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+
+    background: #f0f4ff;
+    border-radius: 10px;
 }
