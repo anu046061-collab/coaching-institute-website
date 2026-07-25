@@ -85,8 +85,10 @@ nav a {
 
 .card {
     background: white;
-    width: 200px;
-    margin: 15px;
+
+    width: 100%;
+    max-width:250px;
+    margin: 10px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     border-radius: 10px;
