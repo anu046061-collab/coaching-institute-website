@@ -1,7 +1,4 @@
- * {
-    box-sizing: border -box;
- }
- * {
+* {
     margin: 0;
     padding: 0;
     font-family: Arial;
@@ -10,18 +7,11 @@
 
 /* Navbar */
 nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
     display: flex;
     justify-content: space-between;
-    align-items: center;
-
+    background: #0a1f44;
+    color: white;
     padding: 15px 30px;
-
-    background: rgba(10, 31, 68, 0.8);
-    backdrop-filter: blur(10px);
 }
 
 nav ul {
@@ -48,10 +38,11 @@ nav a {
 }
 
 .hero-content {
-    background: rgba(209, 204, 204, 0.5);
-    padding: 50px;
-    border-radius: 15px;
-    backdrop-filter: blur(8px);
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
 }
 
 .hero button {
@@ -73,22 +64,16 @@ nav a {
     text-align: center;
 }
 
-.courses-container {
+.course-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    background: #f0f4ff;
-    border-radius: 10px;
 }
 
 .card {
     background: white;
-
-    width: 100%;
-    max-width:250px;
-    margin: 10px;
+    width: 200px;
+    margin: 15px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     border-radius: 10px;
@@ -160,6 +145,17 @@ footer {
     border-radius: 50%;
     text-decoration: none;
 }
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    font-size: 25px;
+    padding: 15px;
+    border-radius: 50%;
+    text-decoration: none;
+}
 #downloads {
     padding: 50px;
     text-align: center;
@@ -181,9 +177,28 @@ footer {
 .logo img {
     width: 50px;
     height: 50px;
+    margin-right: 10px;
+}
+.logo img {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;   /* 👈 Ye line logo ko circle banati hai */
     object-fit: cover;    /* image properly fit hogi */
     margin-right: 10px;
+}
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 30px;
+
+    background: rgba(10, 31, 68, 0.8); /* glass effect */
+    backdrop-filter: blur(10px);
 }
 .logo img {
     width: 55px;
@@ -232,6 +247,12 @@ button:active, .btn:active {
 nav ul li a.active {
     color: yellow;
 }
+.hero-content {
+    background: rgba(0,0,0,0.5);
+    padding: 50px;
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+}
 #courses {
     padding: 50px;
     text-align: center;
@@ -247,66 +268,159 @@ nav ul li a.active {
     background: #f0f4ff;
     border-radius: 10px;
 }
-/* ===== FINAL MOBILE FIX (GUARANTEED) ===== */
-html, body {
-    overflow-x: hidden;
-}
-
-/* Fix large elements */
-img, video {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Fix container overflow */
-.container, .course-container {
-    width: 100%;
-    max-width: 100%;
-}
-
-/* ===== MOBILE ===== */
+/* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
 
-    body {
-        overflow-x: hidden;
-    }
-
+    /* Navbar */
     nav {
-        flex-wrap: wrap;
-        padding: 10px;
+        flex-direction: column;
+        align-items: center;
     }
 
     nav ul {
-        width: 100%;
         flex-direction: column;
-        display: none;
+        margin-top: 10px;
     }
 
-    nav ul.show {
-        display: flex;
+    nav ul li {
+        margin: 10px 0;
     }
 
+    /* Hero Section */
     .hero {
-        padding: 40px 15px;
         height: auto;
+        padding: 50px 20px;
     }
 
     .hero-content {
-        width: 100%;
+        padding: 20px;
     }
 
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    /* Courses */
     .course-container {
         flex-direction: column;
         align-items: center;
     }
 
     .card {
-        width: 95%;
+        width: 90%;
     }
 
+    /* Form */
     form {
-        width: 95%;
+        width: 90%;
     }
+
+    /* Contact */
+    .contact p {
+        font-size: 14px;
+    }
+
+}
+/* Hide menu icon on desktop */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
 }
 
-    
+/* Mobile menu */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+        color: white;
+    }
+
+    nav ul {
+        display: none;
+        width: 100%;
+        text-align: center;
+        background: #0a1f44;
+    }
+
+    nav ul.show {
+        display: block;
+    }
+}
+/* ===== MOBILE RESPONSIVE FINAL FIX ===== */
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Navbar */
+    nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        background: #0a1f44;
+    }
+
+    nav ul.show {
+        display: block;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    /* Hero */
+    .hero {
+        height: auto;
+        padding: 40px 15px;
+    }
+
+    .hero-content {
+        padding: 20px;
+    }
+
+    .hero h1 {
+        font-size: 22px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    /* Courses */
+    .course-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    /* Form */
+    form {
+        width: 90%;
+    }
+
+    /* Contact */
+    .contact {
+        padding: 30px 10px;
+    }
+
+    .contact p {
+        font-size: 14px;
+    }
+}
