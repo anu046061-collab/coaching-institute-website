@@ -30,6 +30,7 @@ document.getElementById("admissionForm").addEventListener("submit", async (e) =>
     try {
         let roll = "KI" + Math.floor(1000 + Math.random() * 9000);
         let password = Math.floor(100000 + Math.random() * 900000);
+        console.log(roll, password);
 
         await addDoc(collection(db, "students"), {
             name: name,

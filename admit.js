@@ -20,10 +20,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-window.getData = async function(){
+window.getData = function(){
+  alert("Button working");
+}
 
-  let roll = document.getElementById("roll").value;
-  let password = document.getElementById("password").value;
+
+  let roll = document.getElementById("roll").value.trim;
+  let password = document.getElementById("password").value.trim;
 
   const querySnapshot = await getDocs(collection(db, "students"));
 
@@ -43,9 +46,9 @@ window.getData = async function(){
 
       document.getElementById("card").innerHTML = `
         <h3>Admit Card</h3>
-        <p>Name: ${data.name}</p>
-        <p>Course: ${data.course}</p>
-        <p>Roll: ${data.roll}</p>
+        <p><b>Name: ${data.name}</p>
+        <p><b>Course: ${data.course}</p>
+        <p><b>Roll: ${data.roll}</p>
       `;
     }
   });
@@ -53,4 +56,3 @@ window.getData = async function(){
   if(!found){
     document.getElementById("card").innerHTML = "Invalid ❌";
   }
-}
