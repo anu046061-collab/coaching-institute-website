@@ -424,3 +424,16 @@ nav ul li a.active {
         font-size: 14px;
     }
 }
+.admit-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 25px;
+  background:#0a2540;
+  color:white;
+  text-decoration:none;
+  border-radius:5px;
+}
+
+.admit-btn:hover{
+  background:#163d6b;
+}
