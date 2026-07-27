@@ -20,7 +20,9 @@ document.getElementById("admissionForm").addEventListener("submit", async (e) =>
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const course = document.getElementById("course").value;
-    if (name === "" || course === "" || email === "") {
+    const phone = document.getElementById("phone").value;
+
+    if (name === "" || course === "" || email === "" || phone === "") {
         alert("Please fill all field!");
         return;
     }
@@ -29,10 +31,11 @@ document.getElementById("admissionForm").addEventListener("submit", async (e) =>
         await addDoc(collection(db, "students"), {
             name: name,
             email: email,
-            course: course
+            course: course,
+            phone: phone
         });
 
-        alert("Form Submit Successfully ✅");   
+        alert("Form Submit Successfully ✅");
 
     } catch (error) {
         console.error(error);
