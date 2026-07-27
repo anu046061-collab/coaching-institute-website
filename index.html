@@ -1,102 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Krishna Computer Institute</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    
 
-<!-- Navbar -->
-<nav>
-    <div class="logo">
-        <img src="logo.png" alt="Krishna Computer Institute">
-        <h2>Krishna Computer Institute</h2>
-    </div>
-    <div class="menu-toggle"
-    onclick="toggleMenu()">☰</div>
-
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#courses">Courses</a></li>
-        <li><a href="#form">Admission</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
-
-<!-- Hero Section -->
-<section id="home" class="hero">
-    <div class="hero-content">
-        <h1>Krishna Computer Institute</h1>
-        <p>Best Computer Coaching Near You | CCC, DCA, ADCA, Tally</p>
-        <button onclick="scrollToForm()">Join Now</button>
-    </div>
-</section>
-
-<!-- Courses -->
-<section id="courses">
-    <h2>Our Courses</h2>
-
-    <div class="course-container">
-        <div class="card">
-            <h3>CCC</h3>
-            <p>Basic Computer Course</p>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <img src="logo.png" alt="Krishna Computer Institute">
+            <h2>Krishna Computer Institute</h2>
         </div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-        <div class="card">
-            <h3>DCA</h3>
-            <p>Diploma in Computer Application</p>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#form">Admission</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Krishna Computer Institute</h1>
+            <p>Best Computer Coaching Near You | CCC, DCA, ADCA, Tally</p>
+            <button onclick="scrollToForm()">Join Now</button>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>ADCA</h3>
-            <p>Advanced Diploma Course</p>
+    <!-- Courses -->
+    <section id="courses">
+        <h2>Our Courses</h2>
+
+        <div class="course-container">
+            <div class="card">
+                <h3>CCC</h3>
+                <p>Basic Computer Course</p>
+            </div>
+
+            <div class="card">
+                <h3>DCA</h3>
+                <p>Diploma in Computer Application</p>
+            </div>
+
+            <div class="card">
+                <h3>ADCA</h3>
+                <p>Advanced Diploma Course</p>
+            </div>
+
+            <div class="card">
+                <h3>Tally + GST</h3>
+                <p>Accounting & GST Training</p>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>Tally + GST</h3>
-            <p>Accounting & GST Training</p>
-        </div>
-    </div>
-</section>
+    <!-- Admission Form -->
+    <section id="form">
+        <h2>Admission Form</h2>
 
-<!-- Admission Form -->
-<section id="form">
-    <h2>Admission Form</h2>
+        <form id="admissionForm">
+            <input type="text" placeholder="Your Name" id="name" required>
+            <input type="email" placeholder="Email" id="email" required>
+            <input type="text" placeholder="Course" id="course" required>
+            <button type="submit">Submit</button>
+        </form>
 
-    <form id="admissionForm">
-        <input type="text" placeholder="Your Name" id="name" required>
-        <input type="email" placeholder="Email" id="email" required>
-        <input type="text" placeholder="Course" id="course" required>
-        <button type="submit">Submit</button>
-    </form>
+        <p id="message"></p>
+    </section>
 
-    <p id="message"></p>
-</section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
 
-<!-- Contact Section -->
-<section id="contact" class="contact">
-    <h2>Contact Us</h2>
+        <p><strong>📍 Address:</strong> PNB Bank ke samne, Chanda Road kadipur sultanpur</p>
+        <p><strong>📞 Phone:</strong> 7704811150</p>
+        <p><strong>📧 Email:</strong>Pandeyk5198@gmail. Com</p>
+    </section>
+    <section id="downloads">
+        <h2>Downloads</h2>
 
-    <p><strong>📍 Address:</strong> PNB Bank ke samne, Chanda Road kadipur sultanpur</p>
-    <p><strong>📞 Phone:</strong> 7704811150</p>
-    <p><strong>📧 Email:</strong>Pandeyk5198@gmail. Com</p>
-</section>
-<section id="downloads">
-    <h2>Downloads</h2>
+        <a href="files/admit-card.pdf" download class="btn">Admit Card</a>
+        <a href="files/notes.pdf" download class="btn">Notes</a>
+        <a href="files/certificate.pdf" download class="btn">Certificate</a>
+        <a href="files/experience.pdf" download class="btn">Experience Letter</a>
+    </section>
+    <a href="https://wa.me/7704811150" class="whatsapp" target="_blank">💬</a>
 
-    <a href="files/admit-card.pdf" download class="btn">Admit Card</a>
-    <a href="files/notes.pdf" download class="btn">Notes</a>
-    <a href="files/certificate.pdf" download class="btn">Certificate</a>
-    <a href="files/experience.pdf" download class="btn">Experience Letter</a>
-</section>
-<a href="https://wa.me/7704811150" class="whatsapp" target="_blank">💬</a>
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Krishna Computer Institute kadipur sultanpur| All Rights Reserved</p>
+    </footer>
 
-<!-- Footer -->
-<footer>
-    <p>© 2026 Krishna Computer Institute kadipur sultanpur| All Rights Reserved</p>
-</footer>
+    <script type="module" src="script.js"></script>
 
-<script src="script.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, collection, addDoc }
+            from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAZpPc_...",
+            authDomain: "coaching-institute-website.firebaseapp.com",
+            projectId: "coaching-institute-website",
+            storageBucket: "coaching-institute-website.appspot.com",
+            messagingSenderId: "889564120620",
+            appId: "1:889564120620:web:..."
+        };
+
+        
+
+        console.log("✅ Firebase connected");
+        const form = document.getElementById("admissionForm");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const course = document.getElementById("course").value;
+
+            try {
+                await addDoc(collection(db, "students"), {
+                    name: name,
+                    email: email,
+                    course: course
+                });
+
+                alert("✅ Form submitted");
+                form.reset();
+            } catch (error) {
+                console.log(error);
+            }
+        });
+    </script>
+
 </body>
+
 </html>
