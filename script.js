@@ -28,11 +28,17 @@ document.getElementById("admissionForm").addEventListener("submit", async (e) =>
     }
 
     try {
+        let roll = "KI" + Math.floor(1000 + Math.random() * 9000);
+        let password = Math.floor(100000 + Math.random() * 900000);
+
         await addDoc(collection(db, "students"), {
             name: name,
             email: email,
             course: course,
-            phone: phone
+            phone: phone,
+            time: new Date().toLocaleString(),
+            roll: roll,
+            password: password
         });
 
         alert("Form Submit Successfully ✅");

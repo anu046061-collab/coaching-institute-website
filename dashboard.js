@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Data fetch
-async function loadData(){
+async function loadData() {
   const querySnapshot = await getDocs(collection(db, "students"));
 
   querySnapshot.forEach((doc) => {
@@ -28,6 +28,12 @@ async function loadData(){
         <td>${data.name}</td>
         <td>${data.phone}</td>
         <td>${data.course}</td>
+        <td>${data.time}</td>
+        <td>${data.roll}</td>
+        <td>${data.password}</td>
+        <td>
+        <button onclick="deleteData('${id}')>Delete</button>
+        </td>
       </tr>
     `;
 
@@ -36,3 +42,14 @@ async function loadData(){
 }
 
 loadData();
+import { deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+window.deleteData = async function (id) {
+  let confirmDelete = confirm("Are you sure?");
+
+  if (confirmDelete) {
+    await deleteDoc(doc(db, "students", id));
+    alert("Deleted Successfully");
+    location.reload();
+  }
+}
