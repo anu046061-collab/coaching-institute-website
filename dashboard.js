@@ -34,7 +34,7 @@ async function loadData() {
         <td>${data.roll}</td>
         <td>${data.password}</td>
         <td>
-        <button onclick="deleteData('${id}')>Delete</button>
+        <button onclick="deleteData('${id}')">Delete</button>
         </td>
       </tr>
     `;
@@ -48,6 +48,8 @@ loadData();
 window.deleteData = async function (id){
   let ok = confirm("Delete?");
   if(ok){
+    await deleteDoc(doc(db,"students", id));
+    location.reload();
 
   }
 }

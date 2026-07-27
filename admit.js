@@ -6,12 +6,15 @@ import {
   addDoc 
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// 🔴 Firebase config
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "YOUR_KEY",
-  authDomain: "YOUR_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAzPpC_kncdMoAy9i9Km989R1jGHiLRYWU",
+  authDomain: "coaching-institute--website.firebaseapp.com",
+  projectId: "coaching-institute--website",
+  storageBucket: "coaching-institute--website.firebasestorage.app",
+  messagingSenderId: "889564120620",
+  appId: "1:889564120620:web:f82b1476fb6573105e7389",
+  measurementId: "G-EKKR3TLVC4"
 };
 
 const app = initializeApp(firebaseConfig);
