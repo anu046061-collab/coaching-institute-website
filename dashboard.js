@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getCountFromServer, collection } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -42,6 +43,18 @@ async function loadData() {
 }
 
 loadData();
+async function loadAnalytics(){
+
+  // total students
+  const studentSnap = await getCountFromServer(collection(db, "students"));
+  document.getElementById("totalStudents").innerText = studentSnap.data().count;
+
+  // total admit views
+  const viewSnap = await getCountFromServer(collection(db, "admit_logs"));
+  document.getElementById("totalViews").innerText = viewSnap.data().count;
+}
+
+loadAnalytics();
 import { deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 window.deleteData = async function (id) {
