@@ -36,9 +36,9 @@ document.getElementById("admissionForm").addEventListener("submit", async (e) =>
             email: email,
             course: course,
             phone: phone,
-            time: new Date().toLocaleString(),
             roll: roll,
-            password: password
+            password: password,
+            time: new Date().toLocaleString()
         });
 
         alert("Form Submit Successfully ✅");
