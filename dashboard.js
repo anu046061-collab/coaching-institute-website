@@ -21,7 +21,9 @@ const db = getFirestore(app);
 
 // Data fetch
 async function loadData() {
+  console.log("loading data...");
   const querySnapshot = await getDocs(collection(db, "students"));
+  console.log("docs:", querySnapshot.size);
   let table = 
       document.getElementById("tableBody").innerHTML ="";
 
