@@ -27,11 +27,14 @@ document.getElementById("admissionForm").addEventListener("submit", async (e) =>
         return;
     }
 
+
     try {
         let roll = "KI" + Math.floor(1000 + Math.random() * 9000);
         let password = Math.floor(100000 + Math.random() * 900000);
-        console.log(roll, password);
+        console.log("ROLL:", roll);
+        console.log("PASS:", password);
 
+        alert("ROLL:" + roll + "PASS:", +Password);
         await addDoc(collection(db, "students"), {
             name: name,
             email: email,
@@ -43,6 +46,8 @@ document.getElementById("admissionForm").addEventListener("submit", async (e) =>
         });
 
         alert("Form Submit Successfully ✅");
+        
+
 
     } catch (error) {
         console.error(error);

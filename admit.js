@@ -1,9 +1,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { 
-  getFirestore, 
-  collection, 
-  getDocs, 
-  addDoc 
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -20,39 +20,39 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-window.getData = function(){
-  alert("Button working");
+window.getData = async function () {
+
 }
 
 
-  let roll = document.getElementById("roll").value.trim;
-  let password = document.getElementById("password").value.trim;
+let roll = document.getElementById("roll").value.trim;
+let password = document.getElementById("password").value.trim;
 
-  const querySnapshot = await getDocs(collection(db, "students"));
+const querySnapshot = await getDocs(collection(db, "students"));
 
-  let found = false;
+let found = false;
 
-  querySnapshot.forEach(async (doc) => {
-    let data = doc.data();
+querySnapshot.forEach(async (doc) => {
+  let data = doc.data();
 
-    if(data.roll == roll && data.password == password){
-      found = true;
+  if (data.roll == roll && data.password == password) {
+    found = true;
 
-      // tracking
-      await addDoc(collection(db, "admit_logs"), {
-        roll: data.roll,
-        time: new Date().toLocaleString()
-      });
+    // tracking
+    await addDoc(collection(db, "admit_logs"), {
+      roll: data.roll,
+      time: new Date().toLocaleString()
+    });
 
-      document.getElementById("card").innerHTML = `
+    document.getElementById("card").innerHTML = `
         <h3>Admit Card</h3>
         <p><b>Name: ${data.name}</p>
         <p><b>Course: ${data.course}</p>
         <p><b>Roll: ${data.roll}</p>
       `;
-    }
-  });
-
-  if(!found){
-    document.getElementById("card").innerHTML = "Invalid ❌";
   }
+});
+
+if (!found) {
+  document.getElementById("card").innerHTML = "Invalid ❌";
+}

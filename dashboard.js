@@ -20,7 +20,8 @@ const db = getFirestore(app);
 // Data fetch
 async function loadData() {
   const querySnapshot = await getDocs(collection(db, "students"));
-      document.getElementById("data").innerHTML ="";
+  let table = 
+      document.getElementById("tableBody").innerHTML ="";
 
   querySnapshot.forEach((doc) => {
     let data = doc.data();
