@@ -34,7 +34,7 @@ document.getElementById("admissionForm").addEventListener("submit", async (e) =>
         console.log("ROLL:", roll);
         console.log("PASS:", password);
 
-        alert("ROLL:" + roll + "PASS:", +Password);
+        alert("ROLL:" + roll + "PASS:", + password);
         await addDoc(collection(db, "students"), {
             name: name,
             email: email,
