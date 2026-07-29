@@ -51,11 +51,24 @@ window.getData = async function () {
 
         // show card
         document.getElementById("card").innerHTML = `
-          <h3>Admit Card</h3>
-          <p><b>Name:</b> ${data.name}</p>
-          <p><b>Course:</b> ${data.course}</p>
-          <p><b>Roll:</b> ${data.roll}</p>
-        `;
+  <div style="border:2px solid black; padding:15px; border-radius:10px; background:white;">
+    
+    <h2 style="text-align:center; color:blue;">
+      Krishna Computer Institute
+    </h2>
+
+    <hr>
+
+    <p><b>Name:</b> ${data.name}</p>
+    <p><b>Course:</b> ${data.course}</p>
+    <p><b>Roll No:</b> ${data.roll}</p>
+
+    <p style="text-align:right;">
+      Date: ${new Date().toLocaleDateString()}
+    </p>
+
+  </div>
+`;
       }
     }
 
