@@ -1,25 +1,71 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Admit Card</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f9;
+      text-align: center;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      width: 300px;
+      margin: 50px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    button {
+      background: blue;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background: darkblue;
+    }
+
+    #card {
+      margin-top: 20px;
+      padding: 15px;
+      background: #e8f0fe;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 
 <body>
 
-  <h2>Download Admit Card</h2>
+  <div class="box">
+    <h2>Get Admit Card</h2>
 
-  <input type="text" id="roll" placeholder="Enter Roll Number">
-  <br><br>
-  <input type="password" id="password" placeholder="Enter Password">
-  <br><br>
+    <!-- INPUT -->
+    <input type="text" id="roll" placeholder="Enter Roll Number" required>
+    <input type="password" id="password" placeholder="Enter Password" required>
 
-  <button onclick="getData()">Get Admit Card</button>
+    <!-- BUTTON -->
+    <button onclick="getData()">Get Admit Card</button>
 
-  <div id="card"></div>
+    <!-- RESULT -->
+    <div id="card"></div>
+  </div>
 
+  <!-- JS -->
   <script type="module" src="admit.js"></script>
 
 </body>
-
 </html>
