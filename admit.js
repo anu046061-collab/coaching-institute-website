@@ -49,22 +49,58 @@ window.getData = async function () {
           time: new Date().toLocaleString()
         });
 
-        // show card
+        
         document.getElementById("card").innerHTML = `
-  <div style="border:2px solid black; padding:15px; border-radius:10px; background:white;">
-    
-    <h2 style="text-align:center; color:blue;">
+  <div style="
+    border:2px solid #0a3d62;
+    padding:20px;
+    border-radius:12px;
+    background:linear-gradient(to right, #f0f8ff, #ffffff);
+    width:300px;
+    margin:auto;
+    font-family:Arial;
+  ">
+  <img src="image/logo.png" style="
+  width:60px;
+  display:block;
+  margin:auto;
+  ">
+
+    <h2 style="
+      text-align:center;
+      color:#0a3d62;
+      margin-bottom:5px;
+    ">
       Krishna Computer Institute
     </h2>
 
+    <p style="text-align:center; font-size:12px; color:gray;">
+      Chanda Road, Near PNB Bank
+    </p>
+
     <hr>
 
-    <p><b>Name:</b> ${data.name}</p>
-    <p><b>Course:</b> ${data.course}</p>
-    <p><b>Roll No:</b> ${data.roll}</p>
+    <div style="text-align:left; margin-top:10px;">
+      <p><b>Name:</b> ${data.name}</p>
+      <p><b>Course:</b> ${data.course}</p>
+      <p><b>Roll No:</b> ${data.roll}</p>
+    </div>
 
-    <p style="text-align:right;">
-      Date: ${new Date().toLocaleDateString()}
+    <hr>
+
+    <div style="display:flex; justify-content:space-between; font-size:12px;">
+      <span>Date: ${new Date().toLocaleDateString()}</span>
+      <span>Valid</span>
+    </div>
+
+    <p style="
+      text-align:center;
+      margin-top:15px;
+      font-size:12px;
+      color:green;
+      font-weight:bold;
+    ">
+      ✔ Verified Student
     </p>
 
   </div>
