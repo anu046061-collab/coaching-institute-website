@@ -24,12 +24,12 @@ async function loadData() {
   console.log("loading data...");
   const querySnapshot = await getDocs(collection(db, "students"));
   console.log("docs:", querySnapshot.size);
-  let table =
-    document.getElementById("tableBody").innerHTML = "";
+  
+    document.getElementById("data").innerHTML = "";
 
   querySnapshot.forEach((docSnap) => {
     let data = docSnap.data();
-
+    let id = docSnap.id;
     let row = `
       <tr>
         <td>${data.name}</td>
@@ -67,9 +67,9 @@ async function loadAnalytics() {
   document.getElementById("totalViews").innerText = viewSnap.data().count;
 }
 
-document.addEventListener("DOMContentLoaded",() =>{
+document.addEventListener("DOMContentLoaded", () => {
 
 
-loadAnalytics();
-loadData();
+  loadAnalytics();
+  loadData();
 });
