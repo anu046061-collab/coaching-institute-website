@@ -1,8 +1,8 @@
 console.log("dashboard loaded");
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { deleteDoc,getCountFromServer, collection } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import { getFirestore, collection, getDocs, getCountFromServer, deleteDoc, doc }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -24,11 +24,11 @@ async function loadData() {
   console.log("loading data...");
   const querySnapshot = await getDocs(collection(db, "students"));
   console.log("docs:", querySnapshot.size);
-  let table = 
-      document.getElementById("tableBody").innerHTML ="";
+  let table =
+    document.getElementById("tableBody").innerHTML = "";
 
-  querySnapshot.forEach((doc) => {
-    let data = doc.data();
+  querySnapshot.forEach((docSnap) => {
+    let data = docSnap.data();
 
     let row = `
       <tr>
@@ -43,31 +43,33 @@ async function loadData() {
         </td>
       </tr>
     `;
-
+    console.log(document.getElementById("data"));
     document.getElementById("data").innerHTML += row;
   });
 }
-
-loadData();
 //delete
-window.deleteData = async function (id){
+window.deleteData = async function (id) {
   let ok = confirm("Delete?");
-  if(ok){
-    await deleteDoc(doc(db,"students", id));
+  if (ok) {
+    await deleteDoc(doc(db, "students", id));
     location.reload();
 
   }
 }
 // analytics
-async function loadAnalytics(){
+async function loadAnalytics() {
   const studentSnap = await
-  getCountFromServer(collection(db,"students"));
-  
-  document.getElementById("totalStudent").innerText = studentSnap.data().count;
-  const viewSnap = await 
-  getCountFromServer(collection(db,"admit_logs"));
+    getCountFromServer(collection(db, "students"));
+
+  document.getElementById("totalStudents").innerText = studentSnap.data().count;
+  const viewSnap = await
+    getCountFromServer(collection(db, "admit_logs"));
   document.getElementById("totalViews").innerText = viewSnap.data().count;
 }
 
-  
+document.addEventListener("DOMContentLoaded",() =>{
+
+
 loadAnalytics();
+loadData();
+});
