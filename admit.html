@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <meta charset="UTF-8">
   <title>Admit Card</title>
 
@@ -27,7 +28,7 @@
     }
 
     button {
-      background: blue;
+      background: black;
       color: white;
       padding: 10px;
       border: none;
@@ -55,7 +56,22 @@
 
     <!-- INPUT -->
     <input type="text" id="roll" placeholder="Enter Roll Number" required>
-    <input type="password" id="password" placeholder="Enter Password" required>
+<div style="position:relative; width:250px; margin:auto;">
+  
+  <input type="password" id="password" placeholder="Enter Password"
+    style="width:100%; padding:10px;">
+
+  <i class="fa-solid fa-eye" onclick="togglePassword()"
+    style="
+      position:absolute;
+      right:10px;
+      top:50%;
+      transform:translateY(-50%);
+      cursor:pointer;
+    ">
+  </i>
+
+</div>
 
     <!-- BUTTON -->
     <button onclick="getData()">Get Admit Card</button>
@@ -63,7 +79,7 @@
     <!-- RESULT -->
     <div id="card"></div>
   </div>
-
+>
   <!-- JS -->
   <script type="module" src="admit.js"></script>
 
