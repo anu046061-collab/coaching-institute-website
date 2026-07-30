@@ -21,8 +21,9 @@ document.getElementById("admissionForm").addEventListener("submit", async (e) =>
     const email = document.getElementById("email").value;
     const course = document.getElementById("course").value;
     const phone = document.getElementById("phone").value;
+     const photo = document.getElementById("photo").files[0];
 
-    if (name === "" || course === "" || email === "" || phone === "") {
+    if (name === "" || course === "" || email === "" || phone === "" || photo === "") {
         alert("Please fill all field!");
         return;
     }
@@ -33,8 +34,9 @@ document.getElementById("admissionForm").addEventListener("submit", async (e) =>
         let password = Math.floor(100000 + Math.random() * 900000);
         console.log("ROLL:", roll);
         console.log("PASS:", password);
-
-        alert("ROLL:" + roll + "PASS:", + password);
+alert("ROLL:" + roll + "PASS:", + password);
+let reader = new FileReader();
+reader.onload = async function(){
         await addDoc(collection(db, "students"), {
             name: name,
             email: email,
@@ -42,10 +44,12 @@ document.getElementById("admissionForm").addEventListener("submit", async (e) =>
             phone: phone,
             roll: roll,
             password: password,
+            photo:reader.result,
             time: new Date().toLocaleString()
         });
 
         alert("Form Submit Successfully ✅");
+        reader,readAsDataURL(photo);
         
 
 

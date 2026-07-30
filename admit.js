@@ -1,6 +1,13 @@
-// 🔥 Firebase imports
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+// FIREBASE IMPORT
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// 🔥 YOUR FIREBASE CONFIG 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAzPpC_kncdMoAy9i9Km989R1jGHiLRYWU",
@@ -12,129 +19,98 @@ const firebaseConfig = {
   measurementId: "G-EKKR3TLVC4"
 };
 
-
-
-// 🔥 Init
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// ✅ MAIN FUNCTION
+// 🔥 MAIN FUNCTION
 window.getData = async function () {
 
-  const roll = document.getElementById("roll").value.trim();
-  const password = document.getElementById("password").value.trim();
+  let roll = document.getElementById("roll").value.trim();
+  let password = document.getElementById("password").value.trim();
 
-  // validation
-  if (!roll || !password) {
-    alert("Roll aur Password enter karo!");
-    return;
-  }
+  const querySnapshot = await getDocs(collection(db, "students"));
 
-  try {
-    const querySnapshot = await getDocs(collection(db, "students"));
+  let found = false;
 
-    let found = false;
+  querySnapshot.forEach(async (doc) => {
 
-    for (const doc of querySnapshot.docs) {
+    let data = doc.data();
 
-      const data = doc.data();
+    if (data.roll == roll && data.password == password) {
 
-      if (data.roll == roll && data.password == password) {
+      found = true;
 
-        found = true;
+      // TRACKING
+      await addDoc(collection(db, "admit_logs"), {
+        roll: data.roll,
+        time: new Date().toLocaleString()
+      });
 
-        // tracking (optional)
-        await addDoc(collection(db, "admit_logs"), {
-          roll: data.roll,
-          time: new Date().toLocaleString()
-        });
+      // 🎯 CARD DESIGN
+      let cardHTML = `
+      <div style="
+        border:2px solid #0a3d62;
+        padding:20px;
+        border-radius:12px;
+        background:white;
+        text-align:center;
+      ">
 
-        //final card design working
-        document.getElementById("card").innerHTML = `
-  <div style="
-    border:2px solid #0a3d62;
-    padding:20px;
-    border-radius:12px;
-    background:linear-gradient(to right, rgb(244, 244, 244), #ffffff);
-    width:300px;
-    margin:auto;
-    font-family:Arial;
-  ">
-  <img src="logo.png" style="
-  width:80px;
-  height:80px;
-  display:block;
-  margin:auto;
-  border-radius:50%;
-  border:3px solid #0a3d62;
-  padding:5px;
-  background:white;
-  box-shadow:0 4px 10 px rgba(0,0,0,0.2);
+        <img src="logo.png" style="
+          width:80px;
+          height:80px;
+          border-radius:50%;
+          border:2px solid #0a3d62;
+        ">
 
-  " />
-  
+        <h2 style="color:#0a3d62;">Krishna Computer Institute</h2>
 
-    <h2 style="
-      text-align:center;
-      color:#0a3d62;
-      margin-bottom:5px;
-    ">
-      Krishna Computer Institute
-    </h2>
+        <p style="color:gray;">Chanda Road, Near PNB Bank</p>
 
-    <p style="text-align:center; font-size:12px; color:gray;">
-      Chanda Road, Near PNB Bank
-    </p>
+        <hr>
 
-    <hr>
+        <img src="${data.photo}" style="
+          width:90px;
+          height:90px;
+          border-radius:50%;
+          border:2px solid black;
+        ">
 
-    <div style="text-align:left; margin-top:10px;">
-      <p><b>Name:</b> ${data.name}</p>
-      <p><b>Course:</b> ${data.course}</p>
-      <p><b>Roll No:</b> ${data.roll}</p>
-    </div>
+        <p><b>Name:</b> ${data.name}</p>
+        <p><b>Course:</b> ${data.course}</p>
+        <p><b>Roll:</b> ${data.roll}</p>
 
-    <hr>
+        <p><b>Date:</b> ${new Date().toLocaleDateString()}</p>
 
-    <div style="display:flex; justify-content:space-between; font-size:12px;">
-      <span>Date: ${new Date().toLocaleDateString()}</span>
-      <span>Valid</span>
-    </div>
+        <div id="qr"></div>
 
-    <p style="
-      text-align:center;
-      margin-top:15px;
-      font-size:12px;
-      color:green;
-      font-weight:bold;
-    ">
-      ✔ Verified Student
-    </p>
+        <button onclick="downloadPDF()">Download PDF</button>
 
-  </div>
-`;
-      }
+      </div>
+      `;
+
+      document.getElementById("card").innerHTML = cardHTML;
+
+      // 🔥 QR CODE
+      QRCode.toCanvas(document.getElementById("qr"), data.roll);
+
     }
 
-    if (!found) {
-      document.getElementById("card").innerHTML = "Invalid ❌";
-    }
+  });
 
-  } catch (error) {
-    console.error(error);
-    alert("Error: " + error.message);
+  if (!found) {
+    document.getElementById("card").innerHTML =
+      "<p style='color:red;'>Invalid ❌</p>";
   }
 
 };
-window.togglePassword = function () {
-  let pass = document.getElementById("password");
-  let eye = event.target;
 
-  if (pass.type === "password") {
-    pass.type = "text";
-    eye.innerText = "🙈";
-  } else {
-    pass.type = "password";
-    eye.innerText = "👁️";
-  }
+// 🔥 PDF DOWNLOAD
+window.downloadPDF = function () {
+
+  let content = document.getElementById("card").innerHTML;
+
+  let win = window.open("");
+  win.document.write(content);
+  win.print();
 };

@@ -1,116 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8">
   <title>Admit Card</title>
+
+  <!-- QR CODE -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
   <style>
     body {
       font-family: Arial;
-      background: #f4f6f9;
-      text-align: center;
+      background: linear-gradient(to right, #5f9cff, #c2e0ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
 
     .box {
       background: white;
-      padding: 20px;
+      padding: 25px;
+      border-radius: 12px;
       width: 300px;
-      margin: 50px auto;
-      border-radius: 10px;
+      text-align: center;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
 
     input {
-      width: 90%;
+      width: 100%;
       padding: 10px;
       margin: 10px 0;
     }
 
     button {
-      background: black;
-      color: white;
+      width: 100%;
       padding: 10px;
+      background: #0a3d62;
+      color: white;
       border: none;
       cursor: pointer;
-      width: 100%;
-    }
-
-    button:hover {
-      background: darkblue;
     }
 
     #card {
       margin-top: 20px;
-      padding: 15px;
-      background: #e8f0fe;
-      border-radius: 8px;
     }
   </style>
 </head>
-<body style="margin:0; font-family:Arial; background:#f5f7fa;">
 
-  <div style="
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-  ">
+<body>
 
-    <div style="
-      background:white;
-      padding:30px;
-      border-radius:12px;
-      box-shadow:0 5px 20px rgba(0,0,0,0.1);
-      width:300px;
-      text-align:center;
-    ">
+<div class="box">
+  <h2>Get Admit Card</h2>
 
-      <h2 style="margin-bottom:20px;">Get Admit Card</h2>
+  <input type="text" id="roll" placeholder="Enter Roll Number">
 
-      <!-- Roll -->
-      <input type="text" id="roll" placeholder="Enter Roll Number"
-        style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:6px;">
+  <input type="password" id="password" placeholder="Enter Password">
 
-      <!-- Password -->
-      <div style="position:relative;">
-        <input type="password" id="password" placeholder="Enter Password"
-          style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;">
-        
-        <span onclick="togglePassword()" style="
-          position:absolute;
-          right:10px;
-          top:50%;
-          transform:translateY(-50%);
-          cursor:pointer;
-        ">
-          👁️
-        </span>
-      </div>
+  <button onclick="getData()">Get Admit Card</button>
 
-      <!-- Button -->
-      <button onclick="getData()" style="
-        width:100%;
-        margin-top:20px;
-        padding:10px;
-        background:#0a3d62;
-        color:white;
-        border:none;
-        border-radius:6px;
-        cursor:pointer;
-        font-weight:bold;
-      ">
-        Get Admit Card
-      </button>
+  <div id="card"></div>
+</div>
 
-      <!-- Result -->
-      <div id="card" style="margin-top:20px;"></div>
-
-    </div>
-
-  </div>
-
-  <script type="module" src="admit.js"></script>
+<script type="module" src="admit.js"></script>
 
 </body>
 </html>
