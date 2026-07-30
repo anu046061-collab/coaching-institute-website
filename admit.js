@@ -49,22 +49,30 @@ window.getData = async function () {
           time: new Date().toLocaleString()
         });
 
-        
+        //final card design working
         document.getElementById("card").innerHTML = `
   <div style="
     border:2px solid #0a3d62;
     padding:20px;
     border-radius:12px;
-    background:linear-gradient(to right, #f0f8ff, #ffffff);
+    background:linear-gradient(to right, rgb(244, 244, 244), #ffffff);
     width:300px;
     margin:auto;
     font-family:Arial;
   ">
-  <img src="image/logo.png" style="
-  width:60px;
+  <img src="logo.png" style="
+  width:80px;
+  height:80px;
   display:block;
   margin:auto;
-  ">
+  border-radius:50%;
+  border:3px solid #0a3d62;
+  padding:5px;
+  background:white;
+  box-shadow:0 4px 10 px rgba(0,0,0,0.2);
+
+  " />
+  
 
     <h2 style="
       text-align:center;
