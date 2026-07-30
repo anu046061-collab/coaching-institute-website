@@ -128,10 +128,13 @@ window.getData = async function () {
 };
 window.togglePassword = function () {
   let pass = document.getElementById("password");
+  let eye = event.target;
 
   if (pass.type === "password") {
     pass.type = "text";
+    eye.innerText = "🙈";
   } else {
     pass.type = "password";
+    eye.innerText = "👁️";
   }
 };
